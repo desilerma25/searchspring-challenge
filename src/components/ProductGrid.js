@@ -57,8 +57,8 @@ paginationInfo;
         isDisabled={disablePrevButton()}
         color="primary"
       >
-        Prev
-      </Button>{" "}
+        Previous
+      </Button>
       <Button
         onClick={handleNextPagination}
         isDisabled={disableNextButton()}
@@ -73,16 +73,14 @@ paginationInfo;
       </div>
       <Button
         onClick={handlePrevPagination}
-        disabled={disablePrevButton()}
-        isDisabled
+        isDisabled={disablePrevButton()}
         color="primary"
       >
-        Prev
-      </Button>{" "}
+        Previous
+      </Button>
       <Button
         onClick={handleNextPagination}
-        disabled={disableNextButton()}
-        isDisabled
+        isDisabled={disableNextButton()}
         color="primary"
       >
         Next
