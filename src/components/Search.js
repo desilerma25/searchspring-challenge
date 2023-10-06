@@ -1,56 +1,44 @@
-import { React, useState } from "react";
-import { Input, Button, pagination } from "@nextui-org/react";
-import { SearchIcon } from "../assets/SearchIcon";
-import ProductGrid from "./ProductGrid";
+import React from "react";
+import { Input, Button } from "@nextui-org/react";
+import { useSearchContext } from "../contexts/SearchContext";
 import { fetchProductData } from "../services/productService";
+import { SearchIcon } from "../assets/SearchIcon";
 
 function Search() {
-  const [searchValue, setSearchValue] = useState("");
-  const [products, setProducts] = useState([]);
-  const [paginationInfo, setPaginationInfo] = useState({});
+  const { setSearchValue, searchValue, setProducts, setPaginationInfo } =
+    useSearchContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const searchedProducts = await fetchProductData(searchValue, 1);
       setProducts(searchedProducts.results);
-      setPaginationInfo(searchedProducts.pagination)
+      setPaginationInfo(searchedProducts.pagination);
     } catch (error) {}
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <form
-        id="search-bar-container"
-        className="relative"
-        onSubmit={handleSubmit}
-      >
-        <Input
-          onChange={(e) => setSearchValue(e.target.value)}
-          type="search"
-          placeholder="Let's go shopping!"
-          aria-label="search bar"
-          id="search-bar"
-          value={searchValue}
-          className="input"
-        />
-        <Button
-          type="submit"
-          id="search-btn"
-          className="btn-icon absolute right-0 top-0 h-full"
-          startContent={
-            <SearchIcon className="text-black/50 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
-          }
-        ></Button>
-      </form>
-      <ProductGrid
-        products={products}
-        setProducts={setProducts}
-        searchValue={searchValue}
-        paginationInfo={paginationInfo}
-        setPaginationInfo={setPaginationInfo}
+      <Input
+        classNames={{
+          base: "max-w-full sm:max-w-[10rem] h-10",
+          mainWrapper: "h-full",
+          input: "text-small",
+          inputWrapper:
+            "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+        }}
+        onChange={(e) => setSearchValue(e.target.value)}
+        placeholder="Let's go shopping!"
+        size="sm"
+        endContent={
+          <div onClick={(e) => handleSubmit(e)} className="cursor-pointer">
+            <SearchIcon size={18} />
+          </div>
+        }
+        type="search"
+        aria-label="search bar"
+        id="search-bar"
+        value={searchValue}
       />
-    </div>
   );
 }
 

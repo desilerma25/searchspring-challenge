@@ -13,7 +13,6 @@ export async function fetchProductData(searchQuery, pageNum) {
         })
     );
     const productResult = await response.json();
-    console.log("Success", productResult);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }

@@ -1,19 +1,17 @@
+import React from "react";
 import "./App.css";
-
-import { NextUIProvider } from "@nextui-org/react";
-import Search from "./components/Search";
-import ProductCard from "./components/ProductCard";
+import { SearchProvider } from "./contexts/SearchContext";
+import NavBar from "./components/NavBar";
 import ProductGrid from "./components/ProductGrid";
 
 function App() {
   return (
-    <NextUIProvider>
+    <SearchProvider>
       <div className="App">
-        <header className="App-header">
-          <Search />
-        </header>
+        <NavBar />
+        <ProductGrid />
       </div>
-    </NextUIProvider>
+    </SearchProvider>
   );
 }
 

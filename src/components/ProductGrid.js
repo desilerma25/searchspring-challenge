@@ -1,26 +1,20 @@
-import { React, useState } from "react";
+import { React } from "react";
 import ProductCard from "./ProductCard";
-import { Button, Pagination } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { fetchProductData } from "../services/productService";
+import { useSearchContext } from "../contexts/SearchContext";
 
-function ProductGrid({
-  products,
-  setProducts,
-  searchValue,
-  paginationInfo,
-  setPaginationInfo,
-}) {
-  let nextPageNum = paginationInfo.nextPage;
-  let prevPageNum = paginationInfo.previousPage;
-  let currentPageNum = paginationInfo.currentPage;
-  let totalResultPages = paginationInfo.totalPages;
-  let beginningPage = paginationInfo.begin;
+function ProductGrid() {
+  const { setProducts, products, setPaginationInfo, paginationInfo, searchValue } = useSearchContext();
+
+const { nextPage, previousPage, currentPage, totalPages, begin } =
+paginationInfo;
 
   const handleNextPagination = async () => {
     try {
       const nextSearchProducts = await fetchProductData(
         searchValue,
-        nextPageNum
+        nextPage
       );
       setProducts(nextSearchProducts.results);
       setPaginationInfo(nextSearchProducts.pagination);
@@ -33,7 +27,7 @@ function ProductGrid({
     try {
       const prevSearchProducts = await fetchProductData(
         searchValue,
-        prevPageNum
+        previousPage
       );
       setProducts(prevSearchProducts.results);
       setPaginationInfo(prevSearchProducts.pagination);
@@ -43,15 +37,21 @@ function ProductGrid({
   };
 
   const disableNextButton = () => {
-    return currentPageNum === totalResultPages;
+    return currentPage === totalPages;
   };
 
   const disablePrevButton = () => {
-    return currentPageNum === beginningPage;
+    return currentPage === begin;
   };
 
+  const productGridStyle = () => {
+    if (products.length === 0 ) {
+        return 'hidden'
+    }
+  }
+
   return (
-    <div>
+    <div className={productGridStyle()}>
       <Button
         onClick={handlePrevPagination}
         isDisabled={disablePrevButton()}
