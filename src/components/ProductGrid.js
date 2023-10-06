@@ -12,6 +12,9 @@ function ProductGrid({
 }) {
   let nextPageNum = paginationInfo.nextPage;
   let prevPageNum = paginationInfo.previousPage;
+  let currentPageNum = paginationInfo.currentPage;
+  let totalResultPages = paginationInfo.totalPages;
+  let beginningPage = paginationInfo.begin;
 
   const handleNextPagination = async () => {
     try {
@@ -21,8 +24,6 @@ function ProductGrid({
       );
       setProducts(nextSearchProducts.results);
       setPaginationInfo(nextSearchProducts.pagination);
-      console.log("search term", searchValue);
-      console.log("pg num", nextSearchProducts.pagination.currentPage);
     } catch (error) {
       console.error("Error in handleNextPagination:", error);
     }
@@ -36,26 +37,56 @@ function ProductGrid({
       );
       setProducts(prevSearchProducts.results);
       setPaginationInfo(prevSearchProducts.pagination);
-      console.log("search term", searchValue);
-      console.log("pg num", prevSearchProducts.pagination.currentPage);
     } catch (error) {
       console.error("Error in handleNextPagination:", error);
     }
   };
 
+  const disableNextButton = () => {
+    return currentPageNum === totalResultPages;
+  };
+
+  const disablePrevButton = () => {
+    return currentPageNum === beginningPage;
+  };
+
   return (
     <div>
-      <Button onClick={handlePrevPagination}>Prev</Button>{" "}
-      <Button onClick={handleNextPagination}>Next</Button>
-      {/* <Pagination total={10} initialPage={1} /> */}
+      <Button
+        onClick={handlePrevPagination}
+        isDisabled={disablePrevButton()}
+        color="primary"
+      >
+        Prev
+      </Button>{" "}
+      <Button
+        onClick={handleNextPagination}
+        isDisabled={disableNextButton()}
+        color="primary"
+      >
+        Next
+      </Button>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-      {/* <Pagination total={10} initialPage={1} /> */}
-      <Button onClick={handlePrevPagination}>Prev</Button>{" "}
-      <Button onClick={handleNextPagination}>Next</Button>
+      <Button
+        onClick={handlePrevPagination}
+        disabled={disablePrevButton()}
+        isDisabled
+        color="primary"
+      >
+        Prev
+      </Button>{" "}
+      <Button
+        onClick={handleNextPagination}
+        disabled={disableNextButton()}
+        isDisabled
+        color="primary"
+      >
+        Next
+      </Button>
     </div>
   );
 }

@@ -1,5 +1,10 @@
 import React from "react";
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Image,
+} from "@nextui-org/react";
 
 function ProductCard({ product }) {
   const greenPrice = product.msrp > product.price && "text-green-600";

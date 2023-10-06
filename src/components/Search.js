@@ -15,8 +15,6 @@ function Search() {
       const searchedProducts = await fetchProductData(searchValue, 1);
       setProducts(searchedProducts.results);
       setPaginationInfo(searchedProducts.pagination)
-      console.log("in handlesubmit - products", searchedProducts.results);
-      console.log("in handlesubmit - pag", searchedProducts.pagination);
     } catch (error) {}
   };
 
