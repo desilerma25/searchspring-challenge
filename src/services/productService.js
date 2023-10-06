@@ -1,27 +1,28 @@
-const baseURL = "http://api.searchspring.net/api/search/search.json";
+// const baseURL = "http://api.searchspring.net/api/search/search.json";
+// // export let prodArray= [];
+// export async function fetchData(searchQuery, pageNum) {
+//   try {
+//     const response = await fetch(baseURL + '?' + new URLSearchParams({
+//       page: pageNum,
+//       q: searchQuery,
+//       resultsFormat: 'native',
+//       siteId: 'scmq7n'
+//     }));
+//     const result = await response.json();
+//     // prodArray = result.results;
+//     console.log("Success", result)
+//     // displayResults(result)
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     return result
+//     //   prodArray = result
 
-export async function fetchData(searchQuery, pageNum) {
-  try {
-    const response = await fetch(baseURL + '?' + new URLSearchParams({
-      page: pageNum,
-      q: searchQuery,
-      resultsFormat: 'native',
-      siteId: 'scmq7n'
-    }));
-    const result = await response.json();
-    console.log("Success", result)
-    // displayResults(result)
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    // return {
-    //   searchResults: result
-    // }
-  } catch (error) {
-    console.error('There was a problem with the fetch operation:', error);
-    throw error;
-  }
-}
+//   } catch (error) {
+//     console.error('There was a problem with the fetch operation:', error);
+//     throw error;
+//   }
+// }
 
 // export function displayResults(fetchResult) {
 //     // console.log('display', fetchResult.results)

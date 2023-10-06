@@ -3,6 +3,7 @@ import "./App.css";
 import { NextUIProvider } from "@nextui-org/react";
 import Search from "./components/Search";
 import ProductCard from "./components/ProductCard";
+import ProductGrid from "./components/ProductGrid";
 
 function App() {
   return (
@@ -10,7 +11,6 @@ function App() {
       <div className="App">
         <header className="App-header">
           <Search />
-          <ProductCard />
         </header>
       </div>
     </NextUIProvider>
