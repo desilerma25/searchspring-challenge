@@ -6,6 +6,7 @@ import ProductGrid from "./ProductGrid";
 function Search() {
   const [searchValue, setSearchValue] = useState("");
   const [products, setProducts] = useState([]);
+//   const [page, setPage] = useState(1);
 
   const baseURL = "http://api.searchspring.net/api/search/search.json";
 
@@ -63,7 +64,7 @@ function Search() {
           }
         ></Button>
       </form>
-      <ProductGrid products={products} />
+      <ProductGrid products={products} setProducts={setProducts} searchValue={searchValue} />
     </div>
   );
 }
