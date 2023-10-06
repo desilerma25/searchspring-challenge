@@ -1,42 +1,23 @@
 import { React, useState } from "react";
-import { Input, Button } from "@nextui-org/react";
+import { Input, Button, pagination } from "@nextui-org/react";
 import { SearchIcon } from "../assets/SearchIcon";
 import ProductGrid from "./ProductGrid";
+import { fetchProductData } from "../services/productService";
 
 function Search() {
   const [searchValue, setSearchValue] = useState("");
   const [products, setProducts] = useState([]);
-//   const [page, setPage] = useState(1);
+  const [paginationInfo, setPaginationInfo] = useState({});
 
-  const baseURL = "http://api.searchspring.net/api/search/search.json";
-
-  async function fetchData(searchQuery, pageNum) {
-    try {
-      const response = await fetch(
-        baseURL +
-          "?" +
-          new URLSearchParams({
-            page: pageNum,
-            q: searchQuery,
-            resultsFormat: "native",
-            siteId: "scmq7n",
-          })
-      );
-      const productResult = await response.json();
-      console.log("Success", productResult.results);
-      setProducts(productResult.results);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-    } catch (error) {
-      console.error("There was a problem with the fetch operation:", error);
-      throw error;
-    }
-  }
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetchData(searchValue, 1);
+    try {
+      const searchedProducts = await fetchProductData(searchValue, 1);
+      setProducts(searchedProducts.results);
+      setPaginationInfo(searchedProducts.pagination)
+      console.log("in handlesubmit - products", searchedProducts.results);
+      console.log("in handlesubmit - pag", searchedProducts.pagination);
+    } catch (error) {}
   };
 
   return (
@@ -64,7 +45,13 @@ function Search() {
           }
         ></Button>
       </form>
-      <ProductGrid products={products} setProducts={setProducts} searchValue={searchValue} />
+      <ProductGrid
+        products={products}
+        setProducts={setProducts}
+        searchValue={searchValue}
+        paginationInfo={paginationInfo}
+        setPaginationInfo={setPaginationInfo}
+      />
     </div>
   );
 }

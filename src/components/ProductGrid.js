@@ -1,48 +1,48 @@
 import { React, useState } from "react";
 import ProductCard from "./ProductCard";
 import { Button, Pagination } from "@nextui-org/react";
+import { fetchProductData } from "../services/productService";
 
-function ProductGrid({ products,setProducts,searchValue}) {
-    const baseURL = "http://api.searchspring.net/api/search/search.json";
-    const [pagination, setPagination] = useState({});
-    const [page, setPage] = useState(2);
+function ProductGrid({
+  products,
+  setProducts,
+  searchValue,
+  paginationInfo,
+  setPaginationInfo,
+}) {
+  let nextPageNum = paginationInfo.nextPage;
+  let prevPageNum = paginationInfo.previousPage;
 
-    async function fetchData(searchQuery, pageNum) {
-      try {
-        const response = await fetch(
-          baseURL +
-            "?" +
-            new URLSearchParams({
-              page: pageNum,
-              q: searchQuery,
-              resultsFormat: "native",
-              siteId: "scmq7n",
-            })
-        );
-        const productResult = await response.json();
-        console.log("Success", productResult.pagination);
-        setPagination(productResult.pagination);
-        setPage(productResult.pagination.nextPage)
-        setProducts(productResult.results);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-      } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
-        throw error;
-      }
+  const handleNextPagination = async () => {
+    try {
+      const nextSearchProducts = await fetchProductData(
+        searchValue,
+        nextPageNum
+      );
+      setProducts(nextSearchProducts.results);
+      setPaginationInfo(nextSearchProducts.pagination);
+      console.log("search term", searchValue);
+      console.log("pg num", nextSearchProducts.pagination.currentPage);
+    } catch (error) {
+      console.error("Error in handleNextPagination:", error);
     }
+  };
 
-    const handleNextPagination = () => {
-        console.log("NEXT")
-        fetchData(searchValue, page)
-        console.log('pag', page)
+  const handlePrevPagination = async () => {
+    try {
+      const prevSearchProducts = await fetchProductData(
+        searchValue,
+        prevPageNum
+      );
+      setProducts(prevSearchProducts.results);
+      setPaginationInfo(prevSearchProducts.pagination);
+      console.log("search term", searchValue);
+      console.log("pg num", prevSearchProducts.pagination.currentPage);
+    } catch (error) {
+      console.error("Error in handleNextPagination:", error);
     }
-    const handlePrevPagination = () => {
-        console.log("PREV")
-        fetchData(searchValue, page)
-    }
-    
+  };
+
   return (
     <div>
       <Button onClick={handlePrevPagination}>Prev</Button>{" "}
