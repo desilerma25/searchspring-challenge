@@ -17,3 +17,5 @@ export const SearchProvider = ({ children }) => {
 export const useSearchContext = () => {
   return useContext(SearchContext);
 };
+
+

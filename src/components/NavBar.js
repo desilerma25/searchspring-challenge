@@ -3,8 +3,6 @@ import {
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
-  Link,
 } from "@nextui-org/react";
 import Search from "./Search";
 import { useSearchContext } from "../contexts/SearchContext";
@@ -17,7 +15,7 @@ function NavBar() {
       <Navbar isBordered>
         <NavbarContent justify="start">
           <NavbarBrand className="mr-4">
-            <p className="hidden sm:block font-bold text-inherit">ACME</p>
+            <p className="hidden sm:block font-bold text-inherit">RetailTherapy</p>
           </NavbarBrand>
         </NavbarContent>
 

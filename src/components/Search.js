@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Button } from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 import { useSearchContext } from "../contexts/SearchContext";
 import { fetchProductData } from "../services/productService";
 import { SearchIcon } from "../assets/SearchIcon";
@@ -10,17 +10,25 @@ function Search() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const searchedProducts = await fetchProductData(searchValue, 1);
-      setProducts(searchedProducts.results);
-      setPaginationInfo(searchedProducts.pagination);
-    } catch (error) {}
+    if (searchValue) {
+
+      try {
+        const searchedProducts = await fetchProductData(searchValue, 1);
+        setProducts(searchedProducts.results);
+        setPaginationInfo(searchedProducts.pagination);
+      } catch (error) {}
+    }
   };
 
   return (
+    <form
+    id="search-bar-container"
+    className="relative"
+    onSubmit={handleSubmit}
+  >
       <Input
         classNames={{
-          base: "max-w-full sm:max-w-[10rem] h-10",
+          base: "h-10",
           mainWrapper: "h-full",
           input: "text-small",
           inputWrapper:
@@ -39,6 +47,7 @@ function Search() {
         id="search-bar"
         value={searchValue}
       />
+      </form>
   );
 }
 
