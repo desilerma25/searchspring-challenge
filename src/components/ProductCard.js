@@ -9,6 +9,7 @@ import {
 
 function ProductCard({ product }) {
   const greenPrice = product.msrp > product.price && "text-green-600";
+  // console.log(product.thumbnailImageUrl)
 
   return (
     <Card className="p-3" isHoverable="true">
@@ -18,11 +19,12 @@ function ProductCard({ product }) {
       <CardBody className="overflow-visible py-2">
         <Image
           isZoomed
-          // fallbackSrc={require('src/assets/fallbackImg.jpeg')}
+          fallbackSrc={require("../assets/fallbackImg.jpeg")}
           alt="Card background"
-          className="object-cover rounded-xl"
+          className="object-center rounded-xl h-full"
           src={product.thumbnailImageUrl}
           width={270}
+          height={400}
         />
       </CardBody>
       <CardFooter>

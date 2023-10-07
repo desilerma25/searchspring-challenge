@@ -7,12 +7,16 @@ import ProductGrid from "./components/ProductGrid";
 
 function App() {
   return (
+    <div className="bg-image min-h-screen">
     <SearchProvider>
-      <div className="App">
-        <NavBar />
-        <ProductGrid />
-      </div>
-    </SearchProvider>
+
+<NavBar />
+
+<ProductGrid />
+
+</SearchProvider>
+    </div>
+
   );
 }
 

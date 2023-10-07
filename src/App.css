@@ -5,4 +5,14 @@ html,
 body {
   height: 100vh;
   overflow-y: auto;
+  /* background-image: require("../asset"); */
+}
+
+.bg-image {
+  background-image: url('https://cdn.hovia.com/app/uploads/70s-bold-multicolor-stripes-retro-wallpaper-mural-Plain-scaled.jpg');
+  background-size: cover; /* Adjust as needed */
+  background-repeat: no-repeat; /* Prevent repeating the image */
+  background-attachment: fixed; /* Fixed or scroll, depending on your preference */
+  /* min-height: 100vh;
+  background-position: center center; */
 }
