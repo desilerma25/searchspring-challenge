@@ -1,4 +1,4 @@
-const baseURL = "http://api.searchspring.net/api/search/search.json";
+const baseURL = "https://api.searchspring.net/api/search/search.json";
 
 export async function fetchProductData(searchQuery, pageNum) {
   try {
