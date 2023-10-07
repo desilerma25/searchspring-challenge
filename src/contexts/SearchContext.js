@@ -1,14 +1,23 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 const SearchContext = createContext();
 
 export const SearchProvider = ({ children }) => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const [products, setProducts] = useState([]);
   const [paginationInfo, setPaginationInfo] = useState({});
 
   return (
-    <SearchContext.Provider value={{ searchValue, setSearchValue, products, setProducts, paginationInfo, setPaginationInfo }}>
+    <SearchContext.Provider
+      value={{
+        searchValue,
+        setSearchValue,
+        products,
+        setProducts,
+        paginationInfo,
+        setPaginationInfo,
+      }}
+    >
       {children}
     </SearchContext.Provider>
   );
@@ -17,5 +26,3 @@ export const SearchProvider = ({ children }) => {
 export const useSearchContext = () => {
   return useContext(SearchContext);
 };
-
-

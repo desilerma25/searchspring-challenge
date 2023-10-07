@@ -4,19 +4,15 @@ import { SearchProvider } from "./contexts/SearchContext";
 import NavBar from "./components/NavBar";
 import ProductGrid from "./components/ProductGrid";
 
-
 function App() {
   return (
     <div className="bg-image min-h-screen">
-    <SearchProvider>
+      <SearchProvider>
+        <NavBar />
 
-<NavBar />
-
-<ProductGrid />
-
-</SearchProvider>
+        <ProductGrid />
+      </SearchProvider>
     </div>
-
   );
 }
 

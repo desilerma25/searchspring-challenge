@@ -6,12 +6,8 @@ import { fetchProductData } from "../services/productService";
 import { useSearchContext } from "../contexts/SearchContext";
 
 function PaginationBtns() {
-  const {
-    setProducts,
-    setPaginationInfo,
-    paginationInfo,
-    searchValue,
-  } = useSearchContext();
+  const { setProducts, setPaginationInfo, paginationInfo, searchValue } =
+    useSearchContext();
   const { nextPage, previousPage, currentPage, totalPages, begin } =
     paginationInfo;
   const handleNextPagination = async () => {
@@ -51,16 +47,18 @@ function PaginationBtns() {
         <Button
           onClick={handlePrevPagination}
           isDisabled={disablePrevButton()}
-          color="default"
-          variant="ghost"
+          className="bg-amber-300 shadow-lg"
+          variant="solid"
+          size="lg"
         >
           Previous
         </Button>
         <Button
           onClick={handleNextPagination}
+          className="bg-amber-300 shadow-lg"
           isDisabled={disableNextButton()}
-          color="default"
-          variant="ghost"
+          variant="solid"
+          size="lg"
         >
           Next
         </Button>
