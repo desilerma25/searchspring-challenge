@@ -27,14 +27,14 @@ function Search() {
     >
       <Input
         classNames={{
-          base: "h-10",
+          base: "h-12",
           mainWrapper: "h-full",
           input: "text-small",
           inputWrapper: "h-full font-normal text-default-500",
         }}
         onChange={(e) => setSearchValue(e.target.value)}
-        placeholder="Let's go shopping!"
-        size="sm"
+        placeholder="Let's shop!"
+        size="lg"
         endContent={
           <div onClick={(e) => handleSubmit(e)} className="cursor-pointer">
             <SearchIcon size={18} />

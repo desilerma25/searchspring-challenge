@@ -15,17 +15,15 @@ function ProductCard({ product }) {
         <h4 className="font-bold text-large">{product.name}</h4>
       </CardHeader>
       <CardBody className="overflow-visible py-2">
-        <div className="fallBack">
-          <Image
-            isZoomed
-            fallbackSrc={require("../assets/no-img.png")}
-            alt="Card background"
-            className="object-center rounded-xl h-full w-full bg-no-repeat"
-            src={product.thumbnailImageUrl}
-            width={270}
-            height={400}
-          />
-        </div>
+        <Image
+          isZoomed
+          fallbackSrc={require("../assets/no-img.png")}
+          alt="Card background"
+          className="object-center rounded-xl h-full w-full bg-no-repeat"
+          src={product.thumbnailImageUrl}
+          width={270}
+          height={400}
+        />
       </CardBody>
       <CardFooter>
         <div className="flex gap-2">
