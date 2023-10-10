@@ -5,17 +5,26 @@ import { fetchProductData } from "../services/productService";
 import { SearchIcon } from "../assets/SearchIcon";
 
 function Search() {
-  const { setSearchValue, searchValue, setProducts, setPaginationInfo } =
-    useSearchContext();
+  const {
+    setSearchValue,
+    searchValue,
+    setProducts,
+    setPaginationInfo,
+    setLoading,
+  } = useSearchContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (searchValue) {
       try {
+        setLoading(true);
         const searchedProducts = await fetchProductData(searchValue, 1);
+        setLoading(false);
         setProducts(searchedProducts.results);
         setPaginationInfo(searchedProducts.pagination);
-      } catch (error) {}
+      } catch (error) {
+        console.error("Error completing search:", error);
+      }
     }
   };
 
@@ -29,7 +38,7 @@ function Search() {
         classNames={{
           base: "h-12",
           mainWrapper: "h-full",
-          input: "text-small",
+          input: "text-large",
           inputWrapper: "h-full font-normal text-default-500",
         }}
         onChange={(e) => setSearchValue(e.target.value)}

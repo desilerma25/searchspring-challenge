@@ -8,8 +8,15 @@ body {
 }
 
 .bg-image {
-  background-image: url('https://cdn.hovia.com/app/uploads/70s-bold-multicolor-stripes-retro-wallpaper-mural-Plain-scaled.jpg');
+  background-image: url("https://cdn.hovia.com/app/uploads/70s-bold-multicolor-stripes-retro-wallpaper-mural-Plain-scaled.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+@font-face {
+  font-family: "SuperDream";
+  src: url("./assets/fonts/SuperDream.ttf");
+  font-weight: normal;
+  font-style: normal;
 }

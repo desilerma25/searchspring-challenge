@@ -10,11 +10,11 @@ function ProductGrid() {
   useEffect(() => {
     (async () => {
       try {
-        const searchedProducts = await fetchProductData("summer", 1);
+        const searchedProducts = await fetchProductData("fall", 1);
         setProducts(searchedProducts.results);
         setPaginationInfo(searchedProducts.pagination);
       } catch (error) {
-        console.error(error);
+        console.error("Error displaying fall items:", error);
       }
     })();
   }, []);

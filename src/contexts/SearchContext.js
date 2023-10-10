@@ -6,6 +6,7 @@ export const SearchProvider = ({ children }) => {
   const [searchValue, setSearchValue] = useState("");
   const [products, setProducts] = useState([]);
   const [paginationInfo, setPaginationInfo] = useState({});
+  const [loading, setLoading] = useState(false);
 
   return (
     <SearchContext.Provider
@@ -16,6 +17,8 @@ export const SearchProvider = ({ children }) => {
         setProducts,
         paginationInfo,
         setPaginationInfo,
+        loading,
+        setLoading,
       }}
     >
       {children}

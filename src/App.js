@@ -6,10 +6,9 @@ import ProductGrid from "./components/ProductGrid";
 
 function App() {
   return (
-    <div className="bg-image min-h-screen">
+    <div className="bg-image min-h-screen font-SuperDream">
       <SearchProvider>
         <NavBar />
-
         <ProductGrid />
       </SearchProvider>
     </div>

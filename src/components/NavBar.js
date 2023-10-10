@@ -9,16 +9,16 @@ function NavBar() {
 
   return (
     <div className="flex justify-between bg-gray-300 p-3 bg-opacity-50 shadow-lg">
-      <div className="relative p-5">
-        <p className="font-bold text-inherit text-5xl">
+      <div className="relative pt-5">
+        <p className="font-bold text-5xl lg:text-3xl xl:text-5xl">
           <FontAwesomeIcon icon={faStore} className="px-2" />
-          <div className="hidden sm:inline">
-          RetailTherapy
-            
-          </div>
+          <h1 className="hidden sm:inline">RetailTherapy</h1>
         </p>
       </div>
-      <div className="">
+      <p className="italic text-center text-lg pt-7 hidden xl:text-large lg:text-medium lg:inline">
+        Fall is officially here! Shop our fall favorites now!
+      </p>
+      <div>
         <Search handleSearch={handleSearch} />
       </div>
     </div>

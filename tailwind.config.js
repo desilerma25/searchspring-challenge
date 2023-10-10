@@ -8,6 +8,9 @@ module.exports = {
   ],
   
   theme: {
+    fontFamily: {
+      SuperDream: ["SuperDream", "sans-serif"]
+    },
     extend: {},
   },
   darkMode: "class",
