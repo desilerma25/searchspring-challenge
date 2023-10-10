@@ -34,6 +34,15 @@
 - Fall back image is provided if original thumbnail image fails
 - Skeleton provides a loading effect while product images load.
 
+## Future Features:
+- Add to Cart button
+- Cart Icon with Badge to represent if the cart is empty or how many items are currently in the cart
+- Cart page to show items in cart as well as the subtotal
+    - Could also be a Quick View (done with a Modal)
+- Tabs/Buttons for:
+    - Best Sellers
+    - Sale Items
+
 
 ## Available Scripts
 
