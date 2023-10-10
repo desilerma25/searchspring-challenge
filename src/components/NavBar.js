@@ -10,7 +10,12 @@ function NavBar() {
   return (
     <div className="flex justify-between bg-gray-300 p-3 bg-opacity-40 shadow-lg">
       <div className="relative pt-5">
-        <p className="font-bold text-5xl lg:text-3xl xl:text-5xl text-amber-300 text-shadow-black">
+        <p
+          className="font-bold text-5xl lg:text-3xl xl:text-5xl text-amber-300 text-shadow-black cursor-pointer"
+          onClick={() => {
+            document.location.reload();
+          }}
+        >
           <FontAwesomeIcon icon={faStore} className="px-2" />
           <h1 className="hidden sm:inline">RetailTherapy</h1>
         </p>
