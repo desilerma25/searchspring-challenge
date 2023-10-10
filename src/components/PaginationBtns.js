@@ -49,7 +49,7 @@ function PaginationBtns() {
         <Button
           onClick={handlePrevPagination}
           isDisabled={disablePrevButton()}
-          className="bg-amber-300 shadow-lg text-xl"
+          className="bg-amber-300 shadow-lg text-xl text-amber-950"
           variant="solid"
           size="lg"
         >
@@ -57,7 +57,7 @@ function PaginationBtns() {
         </Button>
         <Button
           onClick={handleNextPagination}
-          className="bg-amber-300 shadow-lg text-xl"
+          className="bg-amber-300 shadow-lg text-xl text-amber-950"
           isDisabled={disableNextButton()}
           variant="solid"
           size="lg"

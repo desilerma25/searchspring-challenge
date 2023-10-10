@@ -17,7 +17,7 @@ function ProductCard({ product }) {
   return (
     <Card className="p-3">
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-        <h4 className="text-xl leading-6 p-2">{product.name}</h4>
+        <h4 className="text-xl leading-6 p-2 text-amber-950">{product.name}</h4>
       </CardHeader>
       <CardBody className="overflow-visible py-2">
         <Skeleton isLoaded={!loading}>
@@ -33,9 +33,9 @@ function ProductCard({ product }) {
         </Skeleton>
       </CardBody>
       <CardFooter>
-        <div className="flex gap-2  text-2xl">
+        <div className="flex gap-2  text-2xl text-amber-950">
           {product.msrp > product.price && (
-            <p className="uppercase line-through text-lg">${product.msrp}</p>
+            <p className="uppercase line-through text-lg text-amber-950">${product.msrp}</p>
           )}
           <p className={`uppercase font-bold ${greenPrice}`}>
             ${product.price}

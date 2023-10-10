@@ -20,3 +20,10 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
+.text-shadow-black {
+  text-shadow: 1px 2px black;
+}
+.text-shadow-white {
+  text-shadow: 1px 2px whitesmoke;
+}
