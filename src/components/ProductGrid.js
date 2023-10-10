@@ -20,7 +20,7 @@ function ProductGrid() {
   }, []);
 
   return (
-    <div className="mx-12">
+    <div className="mx-12 lg:mx-24">
       <PaginationBtns />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {products?.map((product) => (

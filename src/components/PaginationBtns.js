@@ -45,7 +45,7 @@ function PaginationBtns() {
 
   return (
     <div>
-      <div className="flex justify-center gap-7 py-7">
+      <div className="flex justify-center gap-7 py-10">
         <Button
           onClick={handlePrevPagination}
           isDisabled={disablePrevButton()}
